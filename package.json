@@ -1,5 +1,5 @@
 {
-  "name": "webpack1",
+  "name": "react.webpack.from.scratch",
   "version": "1.0.0",
   "description": "test project to learn how to use webpack",
   "main": "index.js",
@@ -15,8 +15,12 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "@types/node": "^8.0.17",
     "awesome-typescript-loader": "^3.2.1",
+    "css-loader": "^0.28.4",
     "source-map-loader": "^0.2.1",
-    "typescript": "^2.4.2"
+    "style-loader": "^0.18.2",
+    "typescript": "^2.4.2",
+    "typings-for-css-modules-loader": "^1.5.0"
   }
 }

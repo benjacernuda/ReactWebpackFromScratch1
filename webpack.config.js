@@ -1,8 +1,12 @@
+const resolve = require('path').resolve;
+
 module.exports = {
-    entry: "./src/Index.tsx",
+    entry: 
+     {
+		js: "./src/Index.tsx"
+	},
     output: {
-        filename: "bundle.js",
-        path: __dirname + "/dist"
+        filename: "./dist/bundle.js"
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -18,10 +22,29 @@ module.exports = {
     module: {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+            { test: /\.tsx?$/, exclude:/node_modules/, loader: "ts-loader" },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+            { enforce: "pre", test: /\.js$/, exclude:/node_modules/, loader: "source-map-loader" },
+
+            { test: /\.css$/i, 
+              exclude:/node_modules/,
+              use: [
+                {
+                    loader: 'style-loader'
+                },
+                {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true,
+                        importLoaders: 1,
+                        localIdentName: '[name]__[local]___[hash:base64:5]',
+                        modules: true,
+                        minimize: false
+                    }
+                }
+              ] 
+            }
         ]
     },
 
